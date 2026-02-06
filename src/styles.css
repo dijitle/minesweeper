@@ -3,21 +3,64 @@
   --cell: #d1d5db;
   --revealed: #ffffff;
 }
+html {
+  height: 100%;
+}
 body {
   font-family: Inter, system-ui, Arial, Helvetica, sans-serif;
   background: var(--bg);
   margin: 0;
   padding: 24px;
+  height: 100%;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;
 }
 .app {
   max-width: 520px;
   margin: 0 auto;
+}
+.app.mobile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  max-width: 100%;
 }
 .controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 12px;
+  width: 100%;
+  gap: 12px;
+}
+.app.mobile .controls {
+  margin-bottom: 20px;
+}
+.controls button {
+  padding: 8px 16px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  background: #3b82f6;
+  color: white;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.controls button:active {
+  background: #2563eb;
+}
+.controls div {
+  text-align: center;
+  flex: 1;
+}
+.app.mobile .controls div {
+  font-size: 16px;
 }
 .board {
   display: grid;
@@ -33,17 +76,38 @@ body {
   cursor: pointer;
   user-select: none;
   border-radius: 4px;
+  font-size: 16px;
+  font-weight: bold;
+  touch-action: manipulation;
 }
 .cell.revealed {
   background: var(--revealed);
   cursor: default;
   box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06);
 }
+.app.mobile .cell {
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+}
+.app.mobile .cell:active {
+  opacity: 0.7;
+}
 .hint {
   color: #374151;
   font-size: 13px;
   margin-top: 10px;
+  text-align: center;
+}
+.app.mobile .hint {
+  font-size: 14px;
+  margin-top: 20px;
 }
 h1 {
   margin: 0 0 12px 0;
+  text-align: center;
+}
+.app.mobile h1 {
+  margin: 0 0 16px 0;
+  font-size: 28px;
 }
